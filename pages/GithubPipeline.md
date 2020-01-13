@@ -34,7 +34,7 @@ We deploy Github based repositories with [Travis](https://travis-ci.org/) and it
     + Modify the file
         + Go to [npm](https://www.npmjs.com)
         + Log in with ackee credentials (acc on our ackee password storage)
-        + Get access token from the ackee acount
+        + Get access token from the ackee acount (each user MUST create his own token, it CAN NOT be shared)
         + Encrypt the token with travis encryption command
         +     travis encrypt YOUR_AUTH_TOKEN --add deploy.api_key --com
         + Set encrypted api key into you **.travis.yml** file
