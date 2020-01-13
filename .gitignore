@@ -1,3 +1,4 @@
 node_modules
 _book
 package-lock.json
+npm-debug.log
