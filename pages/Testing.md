@@ -17,7 +17,7 @@ You can go through all the "chapters" or pick the one you just need.
 
 ## Chapters
 
-* 🐶 [Testing Essentials](testing/Essentials.md) - about [Matchers](testing/Essentials.md#matchers) and [Mocking](testing/Essentials.md#mocking)
+* 🐶 [Testing Essentials](./testing/Essentials.md) - about [Matchers](./testing/Essentials.md#matchers) and [Mocking](./testing/Essentials.md#mocking)
 * 📦 Testing Components, Containers & Hooks
 * 🏗 Testing Selectors & Utils
 * 🕰 Sagas
