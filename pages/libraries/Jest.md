@@ -1,14 +1,14 @@
 # 🤡 Jest
 
-[Jest](https://jestjs.io/) is javascript testing framework. We use it mainly for *unit testing* of React components and complex Redux selectors.
+[Jest](https://jestjs.io/) é um framework de teste em JS. Será usado para *testes unitários* de componentes React e complexos seletores Redux.
 
-## Unit tests examples
+## Exemplos de testes unitários
 
-### React components
+### Componentes React
 
-We test React components in complement with [Enzyme](https://airbnb.io/enzyme/), utility testing library for React.
+Os testes dos componentes React serão complementados com o [Enzyme](https://airbnb.io/enzyme/), que é uma biblioteca de testes do React.
 
-In this example, `RatingSimple` is component that renders 0 to 5 stars based on `rating` prop. It has also two sizes - *normal* and *small*.
+Neste exemplo, `RatingSimple` é um componente que imprime/renderiza de 0 a 5 estrelas, baseado numa prop `rating`. Também tem dois tamanhos - *normal* e *small*.
 
 ```jsx
 import React from 'react';
@@ -31,11 +31,11 @@ describe('RatingSimple', () => {
 });
 ```
 
-### Complex Redux selectors
+### Complexos seletores Redux
 
-Selectors can often contain complex logic especially when combining more entities together.
+Seletores ficam bem complexos, especialmente quando são combinados.
 
-In the example below, there is [reselect](https://github.com/reduxjs/reselect) selector for maping product names to user's product ids. *Note: for the sake of example, let's assume it is not obtained from API in this form.*
+No exemplo abaixo, há um seletor [reselect](https://github.com/reduxjs/reselect) para associar nomes de produtos aos ids de produtos do usuário. *Nota: estamos supondo que não está sendo obtido por uma API neste form.*
 
 ```javascript
 // selector.js

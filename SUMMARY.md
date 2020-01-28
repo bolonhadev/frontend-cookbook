@@ -1,8 +1,8 @@
 # Summary
 
--   [🏡 Home](README.md)
--   [🔝 Best practises](pages/BestPractices.md)
--   [📚 Libraries & Frameworks](pages/LibrariesFrameworks.md)
+-   [🏡 Casa](README.md)
+-   [🔝 Melhores práticas](pages/BestPractices.md)
+-   [📚 Bibliotecas e Frameworks](pages/LibrariesFrameworks.md)
     -   [🧪 Cypress](pages/libraries/Cypress.md)
     -   [🤡 Jest](pages/libraries/Jest.md)
 -   [️🏗 Projects development](pages/Projects.md)

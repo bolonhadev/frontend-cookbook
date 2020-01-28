@@ -1,22 +1,22 @@
 # 🧪 Cypress
 
-[Cypress](https://www.cypress.io/) is javascript framework for **end to end testing** of web applications. We have chosen it over other frameworks for its simplicity of use and setup. We even [wrote a blog post](https://www.ackee.cz/blog/cypress-testovani-webovych-aplikaci/) with example about Cypress. In this article we share a few examples and tips that might help you.
+[Cypress](https://www.cypress.io/) é um framework em JS para testar apps de **ponta a ponta**. Como a estrutura do Cypress é mais simples e fácil de setar, foi escolhida. [Esse artigo](https://www.ackee.cz/blog/cypress-testovani-webovych-aplikaci/) tem uns exemplos e dicas que podem te ajudar.
 
-## Table of contents
-* [Examples and tips](#examples-and-tips)
-    * [Custom commands](#custom-commands)
-    * [Environment variables](#environment-variables)
-    * [Fixtures](#fixtures)
-    * [Add screenshots and videos folders to gitignore](#add-screenshots-and-videos-folders-to-gitignore)
+## Conteúdo
+* [Exemplos e dicas](#examples-and-tips)
+    * [Ações personalizadas](#custom-commands)
+    * [Variáveis de ambiente](#environment-variables)
+    * [Fixadores](#fixtures)
+    * [Adicionar a pasta de prints e vídeos para o gitignore](#add-screenshots-and-videos-folders-to-gitignore)
 
-## Examples and tips
-### Custom commands
+## Examplos e dicas
+### Ações personalizadas
 
-[Documentation](https://docs.cypress.io/api/cypress-api/custom-commands.html#Syntax)
+[Documentação](https://docs.cypress.io/api/cypress-api/custom-commands.html#Syntax)
 
-Custom commands are extremly usefull when you repeat same sequences of commands in more more tests. Why not to create a own command to avoid this repetition? They can be defined in `cypress/support/commands.js` file.
+Ações personalizadas (custom commands) são bem úteis quando você repete a mesma sequência de ações em diversos testes. Isso evida que você fique se repetindo, então é só criar um comando seu mesmo que será usado mais de uma vez. São definidos no `cypress/support/commands.js`.
 
-Below is example with custom `authVisit` command we use in almost every test to authenticate before navigating to a specific route/page.
+Porezempu, abaixo um teste para toda vez que estivermos navegando em uma rota/página, podermos autenticar o usuário, o nome dessa ação é `authVisit`. Será quase sempre usado.
 
 ```javascript
 // Definition command.js
@@ -40,11 +40,11 @@ describe('Test group', () => {
 })
 ```
 
-### Environment variables
+### Variáveis de ambiente
 
-[Documentation](https://docs.cypress.io/guides/guides/environment-variables.html#Setting)
+[Documentação](https://docs.cypress.io/guides/guides/environment-variables.html#Setting)
 
-Environment variables are useful for storing dynamic values that can be different for multiple development environments. In the example below we use it for storing REST API url which can naturally vary for different environments (development/stage).
+Variáveis de ambiente são úteis para guardar valores dinâmicos que serão usados em diversos ambientes de desenvolvimento. No exemplo abaixom foi usada uma variável de ambiente para guardar uma url de um REST API que pode mudar, claro, dependendo do ambiente em que estiver, por exemplo desenvolvimento/stage.
 
 ```json
 // Definition in cypress.env.json
@@ -58,13 +58,13 @@ Environment variables are useful for storing dynamic values that can be differen
 Cypress.env('apiUrl') // https://api-dev.ack.ee
 ```
 
-### Fixtures
+### Fixadores
 
-[Documentation](https://docs.cypress.io/api/commands/fixture.html#Syntax)
+[Documentação](https://docs.cypress.io/api/commands/fixture.html#Syntax)
 
-Fixtures are great for storing static test data (e.g. REST API responses/requests). They are defined in JSON files so you can easilly organize them.
+Fixadores são ótimos para armazenar dados estáticos de testes (ex.: REST API respostas/requests). Como são definidos em JSON, fica mais fácil de se organizar.
 
-Example with API response:
+Exemplo com resposta de API:
 
 ```json
 // Definiton in products.json
@@ -83,9 +83,9 @@ cy.fixture('products.json').as('productsData');
 cy.route('GET', 'http://api.ack.ee', '@productsData');
 ```
 
-### Add *screenshots* and *videos* folders to gitignore
+### Adicionar a pasta de *screenshots* e *vídeos* para o gitignore
 
-When you run tests in command line using `cypress run` command, it creates these two folders with images and videos from done tests. Adding it to `.gitignore` is recommended to save storage in your git repository.
+Quando você roda testes usando o comando `cypress run`, são criadas duas pastas com imagens e vídeos para testes concluídos. É recomendado adicionar essas pastas ao gitignore com o seguinte comando:
 
 ```javascript
 // .gitignore file

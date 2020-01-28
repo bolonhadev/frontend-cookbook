@@ -1,8 +1,8 @@
-# 📚 Libraries & frameworks
+# 📚 Bibliotecas e framworks
 
-This is a list of libraries and frameworks we use in our projects. Most of them is for React as we use it as our primary javascript framework, but you can find ones for plain javascript as well.
+Essa é a lista do que usamos aqui, (eles, não eu)... A maioria é em React, mas você pode achar diretão no JS tb.
 
-## List
+## Lista
 
  - [Ant design](#ant-design)
  - [Classnames](#classnames)
@@ -23,98 +23,106 @@ This is a list of libraries and frameworks we use in our projects. Most of them 
  - [Reselect](#reselect)
  - [Scrollbars](#scrollbars)
 
-## List with description
+## Lista e descrição
 
-### Ant design
+### Ant design (Design de Formiga)
 
-A design system with great amount of React UI components (e.g. Table, Grid, Button). We use [redux-form-antd](https://www.npmjs.com/package/redux-form-antd) for binding Ant Design field components to Redux Form.
+Uma arquitetura de design (design system) com um monte de elementos/componentes React (React UI components: table, grid, button, navigation, breadcrumb). E pra fazer os forms funcionarem, foi usado o [redux-form-antd](https://www.npmjs.com/package/redux-form-antd) que liga os elementos/componentes do Ant Design ao Redux Form.
 
 https://ant.design/
 
 ### Classnames
 
-Small utility library useful in cases you need more complex CSS classes naming. Typical use case is for conditional class assignment.
+Mano... vi isso muito no WordPress. Basicamente, é um jeito de você colocar nome de classe de CSS pro seu elemento. Mas daí tem umas paradinhas, umas funções pra dar uma turbinada nisso.
 
 https://github.com/JedWatson/classnames
 
 ### Fela
 
-Library for styling in javascript with many advantages such as atomic CSS, no specifity issues or easy state driven styling.
+Essa biblioteca JS também é para estilização CSS, tem várias paradinhas tipo você usar variáveis inline no elemento, nomeação de estilos básicos, suporte i18n...
 
 http://fela.js.org/
 
 ### Infinite scroller
 
-Infinite scroll component for React
+Rolagem infinita, chaato pra caramba... c vai rolando e vai carregando mais coisas.
 
 https://github.com/CassetteRocks/react-infinite-scroller
 
 ### Lodash
 
-Javascript utility library we use very often.
+Uma biblioteca auxiliar para trabalhar com arrays, numbers, objects, strings... Tem umas funçõezinhas úteis.
 
 https://lodash.com
 
 ### MJML
 
-A framework for easy creating responsive emails. You don't have to bother with tables and styles by yourself anymore and focus on content and design.
+Framework para emails responsivos. Usado por uns caras grandes.
 
 https://mjml.io/
 
 ### Moment
 
-Javascript library for for working with date and time.
+Biblioteca para trabalhar com datas e tempos.
 
 http://momentjs.com/
 
 ### React Intl
 
-Internalization library for React.
+Traduzir e internacionalizar o seu app, inclusive com mudanças monetárias e de datas, com pluralização e os escambau as 4.
 
 https://github.com/yahoo/react-intl
 
 ### React responsive
 
-Library for responsive React components if CSS media queries are not enough.
+Sá fitaqui é daora q te ajuda nas hora dos responsivo.
 
 https://github.com/contra/react-responsive
 
 ### React router
 
-Well known routing library for React. We use both version 3 and version 4 based on specific project [with bindings for redux](https://github.com/supasate/connected-react-router).
+Bagu io de rota, tiu. Todo mundo usa, se tem q se familiarizar com o bâangue, taligado? 
+Vai ser conectado com o [redux](https://github.com/supasate/connected-react-router). Pq você vai precisar armazenar alguns estados enquanto vai de um componente a outro.
 
 https://www.npmjs.com/package/react-router
 
 ### Recompose
 
-Great utility library for function components and HOC.
+Biblioteca para function component e HOC, esse HOC é tipo isso veja (uma função que atualiza um componente e retorna componente, não dado):
+
+> **const NewComponent** = (**BaseComponent**) => {  
+>  // _... create new component from old one and update_  
+>  return **UpdatedComponent**  
+> }  
 
 https://github.com/acdlite/recompose
 
 ### Redux
 
-Popular state managing library.
+Administrador de estados, biblioteca bem famosa então melhor se familiarizar com ela.
 
 https://redux.js.org/
 
 ### Redux form
 
-Form managing library for projects using Redux. We use it a lot.
+Se você usa Redux, provavelmente usa essa biblioteca para gerenciar os forms
 
 https://redux-form.com
 
 ### Redux saga
 
-Libraray for managing side effect in React/Redux app. We love using it, because it simplifies asynchronous flow and allows you to easilly write more complex logic.
+Com o redux saga, você pode manipular seu app de forma assíncrona de forma mais simples: '_simples assim_'... :/
 
 https://redux-saga.js.org/
 
 ### Reselect
 
-Selector library for creating and combining memoized Redux selectors which improves performance.
+Criar e combinar seletores que foram [**memoizados**](https://pt.stackoverflow.com/questions/405781/qual-%C3%A9-a-real-diferen%C3%A7a-entre-usememo-e-usecallback) pelo Redux, coisa que esperamos que esteja bem mais clara antes do fim dessa leitura.
 
 https://github.com/reduxjs/reselect
 
 ### Scrollbars
+
+Barra de rolagem personalizada.
 
 https://github.com/malte-wessel/react-custom-scrollbars

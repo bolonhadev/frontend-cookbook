@@ -1,13 +1,22 @@
 ![Ackee javascript](img/ackee_javascript.jpeg)
 
-# Ackee Frontend Cookbook
-If you came here for some Ackee and salt fish recipes then we have bad news for you. We cook mobile & web apps and this Cookbook is about cooking the best apps with Prague based company Ackee.
+# Um bom começo para noobs
+Começar pela prática é a mesma coisa que fazer a bomba nuclear sem o algoritmo do Einstein.
+Você até pode explodir algumas coisas, mas sempre estará atrás de quem estudou a teoria.
+Então lêésse guia de boas práticas aqui e vê se num f0d3 p0hh@. 
 
-However if you really want some Ackee and saltfish instead of javascript [here are some recipes](https://cookpad.com/us/search/ackee) for you. 👨‍🍳
+Ahh.. e eu tenho gatos passando no meu teclado, você pode ver caracteres estranhos no meio do nada. 🐾🐾🐾
 
-## Why another javascript practices / style guide?
-There could be many similar cookbooks but this one is ours and we want to share for several reasons:
-* We hire a lot! So you know what you can expect joining us
-* We think we do some pretty cool stuff and we want to share it with you
-* Sharing is caring
-* Besides who wouldn’t like to have own cookbook on the internet right?
+## Boas práticas ou javascript guia de estilo
+É isso que você está lendo. Quando começou a aprender, seu messias disse, vem e segue-me?
+E você não entendeu o pq de segui-lo e ele diz apenas, 'eu sou o caminho, a verdade e a luz,
+quem vem a mim se torna dev fodão'?
+Aí depois de você ter feito o que ele mandou você se achou o cara, postou no LinkedIn e na hora do vamo vê... você ficou perdido?
+
+🐾 É isso aê, irmão... se é noob !
+
+🐾 Aqui você vai ver coisas daoras, feita pelo time da ACKEE
+
+🐾 Traduzi do jeito que eu queria mesmo, tá achando ruim sai daqui
+
+🐾 Depois de aprender, construa seu próprio estilo, mas aprenda
