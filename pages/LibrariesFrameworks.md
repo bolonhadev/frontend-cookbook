@@ -25,7 +25,7 @@ Essa é a lista do que usamos aqui, (eles, não eu)... A maioria é em React, ma
 
 ## Lista e descrição
 
-### Ant design (Design de Formiga)
+### Ant design
 
 Uma arquitetura de design (design system) com um monte de elementos/componentes React (React UI components: table, grid, button, navigation, breadcrumb). E pra fazer os forms funcionarem, foi usado o [redux-form-antd](https://www.npmjs.com/package/redux-form-antd) que liga os elementos/componentes do Ant Design ao Redux Form.
 

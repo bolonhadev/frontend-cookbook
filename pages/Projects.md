@@ -1,3 +1,3 @@
-# Projects development
+# Desenvolvimento de projetos
 
-This section contains guides for setup and start of projects
+Essa seção contem guias para configurar e iniciar projetos

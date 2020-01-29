@@ -1,11 +1,10 @@
-# Build project using Jenkins
+# Construindo projetos com Jenkins
 
-This recipe describes how to setup Jenkins to automatically build project and deploy it to GS bucket. 
-It consists of few steps made in Jenkins, Gitlab & repository.
+Mais automação, vejamos como configurar o Jenkins para 'buildá' projetos e 'deploiá-los'. Os passos pra isso são feitos no Jenkins, Gitlab & repository.
 
-## Add Jenkinsfile to project
+## Adicionar um Jenkinsfile no projeto
 
-Take the content below and put it to file called `Jenkinsfile` located in root of your repository.
+Pegue o conteúdo abaixo e coloque-o em um arquivo chamado `Jenkinsfile` localizado na raiz do seu repositório.
 
 ```
 PipelineReact {
@@ -34,55 +33,55 @@ PipelineReact {
 }
 ```
 
-### Config fields
+### Configuração
 
-**PipelineReact** - Name of function in groovy script which manages the pipeline.
+**PipelineReact** - É o nome da função no script que gerencia o fluxo de ações (pipeline)
 
-### Change these fields for project
+### Altere esses campos para seu projeto
 
-* **slackChannel** - Set name of Slack channel for sending build result into. Create project specific channel (eg. `#ci-petshare`) or left default `#ci-web` channel - but it's not recommended.  
+* **slackChannel** - Defina o nome do Slackpara enviar informações do resultado do build. Crie um nome de canal específico (tipo: `#ci-petshare`) ou deixe o default `#ci-web` - mas não é recomendado.  
 
-* **buildCommand** - Add set of terminal commands that will run on build trigger.  
+* **buildCommand** - Adicione comandos que serão executados no momento do disparo da build de seu app.
 
-* **baseURL**, **beucketURL** - Git branches that are required to build and adresses to deploy them.
+* **baseURL**, **bucketURL** - Git branches que são necessárias para o build e endereços para fazer o deploy (master/dev/stage).
 
-* **cloudProject** - Id of cloud project where branch is deployed. Ask DevOps for these.
+* **cloudProject** - Id do cloud do project onde a branch where é deploiada. Coisa de DevOps.
 
-### Change these if you need
+### Mudar isso em caso de necessidade
 
-* **build** - Folder where pipeline will look for built project files and use them for deploy.
+* **build** - Pasta que o fluxo de ações (pipeline) procurar por arquivos do projeto para buildar e usar para o deploy.
 
-* **nodeImage** - Name of docker image which will be used as a build environment.
+* **nodeImage** - Nome da imagem do docker que será usada para buildar o ambiente.
 
-## Create new job
+## Criar nova tarefa
 
-1. Go to ackee jenkins websites.
+1. Acesse o site do jenkins.
 
-2. Press **Nové** button in top left corner.  
+2. Clique em **Nové** canto superior esquerdo.  
 ![New Jenkins job](../../img/NewJenkinsJob/new_job.png) 
 
-3. Fill then first input field with your project name.
+3. Preencha o primeiro campo com o nome do seu projeto.
 
-4. Now there are two options to create job
-   * Create multipipeline branch from the scratch by clicking **Multibranch pipeline**.  
+4. Agora você pode optar por duas opções para criar uma tarefa
+   * Criar multiplos ramos de fluxos de ação (pipelines) a partir do zero, só clicar **Multibranch pipeline**.  
    ![New multibranch pipeline](../../img/NewJenkinsJob/multibranch_pipeline.png)  
 
-   * Recommended way is to create it by cloning existing job and changing few settings (you can use eg. `abibuch/abibuch-editor-frontend` job). Just scroll to the bottom of page and fill the "Copy from" field with name of job you want to clone. 
+   * O jeito recomendado é clonando uma tarefa e mudando algumas configurações (você pode usar por exempl, a tarefa: `abibuch/abibuch-editor-frontend`). Basta rolar até o fim da página e preencher o campo "Copy from" com o nome da tarefa que você quer clonar. 
   ![Clone job](../../img/NewJenkinsJob/copy_pipeline_from.png)  
 
-5. After confirm and getting to job configuration page, change the field **Project repository**. Then setup branches which will be scanned for changes by writing their names (separated by single space) into **Behaviours -> Discover branches -> Include** field, eg. `master development stage`.
+5. Após confirmar e chegar até a página de configuração, mude o campo  **Project repository**. Em seguida, configure as branchs que serão assistidas/escaneadas no campo **Behaviours -> Discover branches -> Include**, ex: `master development stage` (separados por espaços vazios).
 ![Configure job](../../img/NewJenkinsJob/job_configuration_new.png) 
 
-6. Decide if `master` branch should been build automatically or only by manual triggering, it's __Supress automatic SCM triggering__ option.  
+6. Decidir se a `master` será buildada automaticamente ou manualmente, para build manual escolha a opção __Supress automatic SCM triggering__.  
 ![Supress automatic SCM triggering option](../../img/NewJenkinsJob/suppress_automatic_SCM_triggering.png)   
 
-## Setup weboohok
+## Configurar webhook
 
-Build webhook URL by replacing **GROUP_NAME/REPOSITORY_NAME** with your project's Gitlab group and repository name in followring URL pattern:  
+Faça uma URL webhook substituindo **GROUP_NAME/REPOSITORY_NAME** com o seu Gitlab e o nome do seu repositório seguindo o padrão da URL.
 
-When you don't know the webhooks looks like - look into different project :) 
+Quando estiver em dúvidas sobre como deve parecer os webhooks - dê uma olhada em diversos projetos :) 
 
-In gitlab repository go to **Settings -> Integration** page and field the URL field with hook adress from previous step, then click Add webhook and check **Enable SSL verification** option is checked.
+No repositório do gitlab vá até a página **Settings -> Integration** e preencha a URL com o endereço do hook no passo anterior, então clique Add webhook e marque o checkbox **Enable SSL verification**.
 ![Gitlab webhook setup](../../img/NewJenkinsJob/gitlab_webhook_setup.png)   
 
 

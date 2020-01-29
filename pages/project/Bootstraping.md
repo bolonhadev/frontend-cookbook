@@ -1,53 +1,63 @@
-# Bootstraping project
+# Projeto init
 
-Because we are usual lazy programmers, we like to make things as automated and done out of the box as possible.
+Cê já deu um boot no windows? Ele não vem com uns programinhas padrões? Então... É sempre bom ter uma esqueminha pra começar, em inglês isso é chamado de "Bootstraping project", eu to chamando de **PROJETO INIT** por uma única razão: eu quero ! 
+Você quer desenvolver a sua ideia, uma solução e precisa de toda estrutura para iniciar. Então, você tem que ter seu init pra tudo, seu próprio react-init, gatsby-init, etc. Assim você automatiza aquilo que repete toda vez que começa um projeto.
 
-You can choose from guides of two project types:
-* [Dynamic React application](#react-application)
-* [Gatsby generated static website](#gatsby-website)
+Aqui você terá dois tipos de projeto init:
+* [App dinâmico em React](#app-dinâmico-em-react)
+* [Gerador de sites estáticos Gatsby](#gatsby-website)
 
-## React Application
+## App dinâmico em React
 
-For React applications we use **[create-react-app](https://facebook.github.io/create-react-app/)** by Facebook to bootstrap basic app structure. But we [forked the project](https://github.com/ackeeCZ/create-react-app) and adjusted [react-scripts](https://github.com/AckeeCZ/create-react-app/tree/master/packages/react-scripts) package (create-react-app uses it internally) to our needs.
+Para apps em React é usado **[create-react-app](https://facebook.github.io/create-react-app/)** do Facebook para estruturas básicas de apps. Mas por aqui você verá outro [create react app](https://github.com/ackeeCZ/create-react-app) com ajustes no [react-scripts](https://github.com/AckeeCZ/create-react-app/tree/master/packages/react-scripts), adicionando pacotes a mais.
 
-So if you want to create a new project, run following command, where `my-app` is the name of your project and also of the folder that will be created
+Então, se quer criar um novo projeto, rode o comando a seguir, onde `my-app` é o nome do seu projeto e o mesmo nome será usado para criar uma pasta para ele.
     
 ```bash
 npx create-react-app  my-app --scripts-version @ackee/react-scripts
 ```
-You will need to decide if the application needs an authentication (the guide will ask you) ant then the basic structure is created.
+Você será solicitado a responder se seu app precisará de autenticação, na hora de criar a estrutura básica.
 
-### Project structure
+### Estrutura do projeto
 
-Created [source files structure](https://github.com/AckeeCZ/create-react-app/tree/master/packages/react-scripts/template/src) is easy to understand, but it's worth to describe the files structure and some patterns we're trying to follow
+Será criado uma [estrutura de pastas e arquivos](https://github.com/AckeeCZ/create-react-app/tree/master/packages/react-scripts/template/src) a qual vamos abordar e tentar descrever.
 
 #### `components`, `containers`, `HOC`
 
-These folders are rarely used and contains globals components, used across all app, hardly assignable to some module.
+Essas pastas são de uso mais raro e contém 1g... hahaha piadóca, entendeu..? 1g akakka... errr.... tá... não... contém componentes globais, que são aplicados por todo o seu app, raramente será usada por algum módulo. 
+
+🐾 Os componentes são funções mais únicas, geralmente aplicadas a nível global.
+
+🐾 Containers: 
+
+> "Um contêiner faz a busca de dados e, em seguida, renderiza seu subcomponente correspondente. É isso." 
+> - Jason Bonta
+
+🐾 HOC - High-Order Components pegam um componente, coloca uns paranauê de wrapper e retorna um componente.
 
 #### `services`
 
-Contains sources that often relates to `redux` like selectors, reducers, sagas, etc. Not intended to contain static sources, like config, constants, etc. but rather functional stuff.
+A pasta `services` possui recursos que geralmente alimentam o `redux`, coisas como seletores, redutores, sagas, etc. Não se usa coisas estáticas nela, como configs, constantes, etc., mas coisas funcionais, que servem ao seu próprio app.
 
 #### `translations`
 
-Contains text translations of the app.
+Contém translações da Terra ao redor do Sol.
 
 #### `styles`
 
-Intended for global app styles, contains
-* app theme definition (colors, fonts, sizes, etc.).
-* vendor styles (`antd`, 3rd party components styles).
-* custom styles for overriding vendor styles globally (eg. restyle `antd` input).
+Aqui encontramos músicas dos anos '90. E toda a indumentária daquele povo. Além disso, também vemos por aqui estilos de aplicação global, tais como:
+* tema do app (cores, fontes, tamanhos, etc.).
+* estilos de terceiros (`antd`, componentes terceirizados).
+* e aqui você customiza os estilos terceirizados (ex.: reestilizar o input do `antd`).
 
 #### `modules`
 
-There is contained most of the application code, it's separated into folders which represents logical areas of code and can cooperate. 
+Ok, já falamos de componentes, certo? Tanto componentes e módulos são um juntadim de funções, comecemos por aí. Pode ser a função por inteiro ou apenas uma parte dela. Definições váreiam sobre ambos (e meus gatos brincam comigo enquanto penso sobre o assunto). Uma forma de pensar é que componentes são mais enxutos, ou singulares, tem aplicações mais únicas, geralmente usadas em âmbito global. Porezemplo: um distribuidor geral de estados permanentes, ou timers, etc.
+Os módulos possuem a maior parte do código, são separados de forma lógica dependendo de cada área da sua aplicação e podem comperar entre si.
 
-There are 2 or 3 modules in default - `application`, `auth` and `core` (`auth` module is optional and included if your request it at bootstraping phase). Structure of each module is similar to application root with two important differences:
+Nesse `default-init-starter-boot-init` nosso, há 2 ou 3 módulos que são padrões: `application`, `auth` e `core` (lembrando que o `auth` é opcional, escolhido na fase do init/start). A estrutura de cada módulo são semelhantes, pq os módulos tem funcionamento semelhante, porém com duas importantes diferenças:
 
-* Module exposes all its sources, needed by other modules or rest of application through `index.js` file. 
-  You should every time import from module root and **never break contracts** with imports leading deeper into the module.
+* Todas as suas fontes (sources), que são usados por outros módulos ou pelo restante do app, são expostos no arquivo `index.js`. Sempre importe coisas por meio da raíz/root do seu módulo, **nunca quebre esse padrão** importando de partes mais internas do seu módulo, veja na prática:
   ```js
   // Good
   import { MyComponent } from './modules/my-module';
@@ -55,7 +65,7 @@ There are 2 or 3 modules in default - `application`, `auth` and `core` (`auth` m
   import MyComponent from './modules/my-module/components/MyComponent'
   ```
 
-* Each dependency from outside of the module is imported in module's `dependencies.js` file and every file inside the module should import them from there. **No other file than `dependencies.js` should contain import that leads outside of the module.**
+* Cada dependência externa usada dentro do módulo deve ser importado do arquivo `dependencies.js` e todo arquivo dentro do módulo deve importar essas dependências de lá. **Malafanculo... sim, vc _mãonafaca_, veja bem... NENHUM outro arquivo, a não ser o `dependencies.js` deve importar coisas de fora do próprio módulo.**
   ```js
   // Good
   import { React } from '../dependecies';
@@ -64,7 +74,7 @@ There are 2 or 3 modules in default - `application`, `auth` and `core` (`auth` m
   import React from 'react';
   ```
 
-Example structure of module looks like
+Exemplo de estrutura do módulo deve parecer assim, oh:
 
 ```
 modules/
@@ -86,27 +96,27 @@ modules/
       - index.js
 ```
 
-### New modules
+### Novos módulos
 
-To make creating modules easier, the project has npm script command (that uses code generator [Hygen](https://www.hygen.io) under the hood) you can use, just run
+Pra facilitar sua vida... e mais que isso, pra te fazer parecer um dev cheio de habilidades e atalhos... pq usar atalhos sempre te faz parecer f0dd@... esse init disponibilizado tem um comando de script npm (q usa o gerador de códigos [Hygen](https://www.hygen.io) por baixo dos panos) pra você usar, é só rodar:
 
 ```bash
 npm run create-module app-layout
 ```
 
-where `app-layout` is name of the module you wanna create. Then look into `modules` directory when new folder `my-module` should appear.
+Onde `app-layout` é o nome do módulo que você vai criar. Então veja na pasta `modules` que uma nova pasta foi adicionada: `my-module`.
 
-## Gatsby website
+## Gatsby website (aooouuuuuuaaaaaaaaa)
 
-Better than start from the scratch is to base new project on one of provided starters. Assume you have `gatsby-cli`  already installed (if not, run `npm install -g gatsby-cli`) then execute
+Melhor do que começar um app do zero, é começar com o Gatsby. Vamo lá, você já tem o  `gatsby-cli` instalado (se não, rode `npm install -g gatsby-cli`), blza... agora rode:
 
 ```bash
 gatsby new my-website https://github.com/gatsbyjs/gatsby-starter-hello-world
 ```
 
-where `my-website` is name of the website you're going to create and `https://github.com/gatsbyjs/gatsby-starter-hello-world` is repository url of starter.
+Onde `my-website` é tanto o nome do seu site, quanto da pasta que será criada para ele. E esse `https://github.com/gatsbyjs/gatsby-starter-hello-world` é a fonte do repo do seu starter.
 
-If you need multi language website you would better [base it on our starter](https://medium.com/@marek.janca/840c27795827) for internatialized websites
+Se você for precisar de um site em várias línguas, você vai querer usar [esse starter aqui oh](https://medium.com/@marek.janca/840c27795827), assim seu site será internatialized. Pra isso rode:
 
 ```bash
 gatsby new my-multi-lang-website https://github.com/AckeeCZ/gatsby-starter-internationalized
